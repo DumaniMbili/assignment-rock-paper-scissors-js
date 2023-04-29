@@ -30,19 +30,23 @@ function playRound(playerSelection, computerSelection) {
     console.log(`It's a tie! You both chose ${playerSelection}.`);
   }
   console.log(`Score: ${playerScore} - ${computerScore}`);
-  if (playerScore === 5 || computerScore === 5) {
-    if (playerScore > computerScore) {
-      console.log(`You win the game!`);
-    } else {
-      console.log(`You lose the game!`);
-    }
-    playerScore = 0;
-    computerScore = 0;
-  }
 }
 
-// Prompt the user for input
-const playerSelection = prompt("Enter Rock, Paper, or Scissors:");
+function playGame() {
+  for (let i = 0; i < 5; i++) {
+    const playerSelection = prompt("Enter Rock, Paper, or Scissors:");
+    const computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+  }
+  if (playerScore > computerScore) {
+    console.log("You win the game!");
+  } else if (computerScore > playerScore) {
+    console.log("You lose the game!");
+  } else {
+    console.log("The game is a tie!");
+  }
+  playerScore = 0;
+  computerScore = 0;
+}
 
-// Play a round with the user's selection and the computer's selection
-playRound(playerSelection, computerPlay());
+playGame();
