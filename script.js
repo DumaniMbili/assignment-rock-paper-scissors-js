@@ -41,9 +41,8 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-const buttons = document.querySelectorAll("button");
-buttons.forEach((button) => {
-  button.addEventListener("click", () => {
-    playRound(button.id, computerPlay());
-  });
-});
+// Prompt the user for input
+const playerSelection = prompt("Enter Rock, Paper, or Scissors:");
+
+// Play a round with the user's selection and the computer's selection
+playRound(playerSelection, computerPlay());
