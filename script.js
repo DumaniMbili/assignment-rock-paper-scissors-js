@@ -10,7 +10,15 @@ function computerPlay() {
 function playRound(playerSelection, computerSelection) {
   const playerSelectionLower = playerSelection.toLowerCase();
   const computerSelectionLower = computerSelection.toLowerCase();
-  if (
+
+  if (!["rock", "paper", "scissors"].includes(playerSelectionLower)) {
+    console.log("Invalid input. Please enter Rock, Paper, or Scissors.");
+    return;
+  }
+
+  if (playerSelectionLower === computerSelectionLower) {
+    console.log(`It's a tie! You both chose ${playerSelection}.`);
+  } else if (
     (playerSelectionLower === "rock" &&
       computerSelectionLower === "scissors") ||
     (playerSelectionLower === "paper" && computerSelectionLower === "rock") ||
@@ -18,19 +26,13 @@ function playRound(playerSelection, computerSelection) {
   ) {
     playerScore++;
     console.log(`You win! ${playerSelection} beats ${computerSelection}.`);
-  } else if (
-    (playerSelectionLower === "rock" && computerSelectionLower === "paper") ||
-    (playerSelectionLower === "paper" &&
-      computerSelectionLower === "scissors") ||
-    (playerSelectionLower === "scissors" && computerSelectionLower === "rock")
-  ) {
+  } else {
     computerScore++;
     console.log(`You lose! ${computerSelection} beats ${playerSelection}.`);
-  } else {
-    console.log(`It's a tie! You both chose ${playerSelection}.`);
   }
   console.log(`Score: ${playerScore} - ${computerScore}`);
 }
+
 
 function playGame() {
   for (let i = 0; i < 5; i++) {
